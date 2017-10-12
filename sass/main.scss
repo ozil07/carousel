@@ -1,0 +1,16 @@
+@import "compass/reset";
+
+.carousel {
+	position: relative;
+}
+
+.carousel__inner {
+	position: relative;
+}
+
+.carousel__slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
