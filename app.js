@@ -5,7 +5,9 @@ function Carousel(options) {
 	let activeSlide = carousel.querySelector('.carousel__inner .active');
 	let animationDuration = options.duration || 5000;
 	let timerId;
+	
 
+	
 	
 	function setCarouselHeight() {
 		carousel.style.height = activeSlide.offsetHeight + 'px';
@@ -54,6 +56,7 @@ function Carousel(options) {
 	}
 
 	function nextSlide() {
+
 		if(!activeSlide.nextElementSibling) {
 			activeSlide.classList.remove('active');
 			carouselInner.firstElementChild.classList.add('active');
@@ -63,11 +66,13 @@ function Carousel(options) {
 			activeSlide.nextElementSibling.classList.add('active');
 			activeSlide = activeSlide.nextElementSibling;
 		}
+
 		hightNextNavs();
 		setCarouselHeight();
 	}
 
 	function prevSlide() {
+
 		if(!activeSlide.previousElementSibling) {
 			activeSlide.classList.remove('active');
 			carouselInner.lastElementChild.classList.add('active');
@@ -77,6 +82,7 @@ function Carousel(options) {
 			activeSlide.previousElementSibling.classList.add('active');
 			activeSlide = activeSlide.previousElementSibling;
 		}
+
 		hightPrevNavs();
 		setCarouselHeight();
 	}
@@ -99,6 +105,34 @@ function Carousel(options) {
 		};
 
 		carousel.appendChild(navsCarousel);
+
+		navsCarousel.onclick = function(e) {
+			clearInterval(timerId);
+
+			let target = e.target;
+			let carouselNavsItem = this.children;
+
+			if(target.tagName != 'SPAN') return;
+
+			for (var i = 0; i < carouselNavsItem.length; i++) {
+
+				if(target == carouselNavsItem[i]) {
+
+					activeSlide.classList.remove('active');
+					activeNavsItem.classList.remove('active');
+					
+					slides[i].classList.add('active');
+					carouselNavsItem[i].classList.add('active');
+
+					activeSlide = slides[i];
+					activeNavsItem = carouselNavsItem[i];
+				}
+
+			};
+
+			autoPlayCarousel();
+		}
+
 	}
 
 	function initCarouselControl() {
@@ -136,6 +170,9 @@ function Carousel(options) {
 	initCarouselNavs(slides);
 	initCarouselControl();
 	hightNextNavs();
+
+	let activeNavsItem = carousel.querySelector('.carousel__navs .active');
+	console.log(activeNavsItem);
 }
 
 let carouselArr = document.querySelectorAll('.carousel');

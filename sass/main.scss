@@ -1,4 +1,7 @@
 @import "compass/reset";
+* {
+	box-sizing: border-box !important;
+}
 
 .carousel {
 	position: relative;
@@ -19,11 +22,16 @@
 	left: 0;
 	width: 100%;
 	opacity: 0;
-	transition: opacity 1.5s linear;
+	transition: opacity 1s linear;
 
-	img {
-		width: 100%;
+	span {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		height: 500px;
+		text-align: center;
+		font: 200px Arial,sans-serif;
+		color: #000;
 	}
 }
 
@@ -36,6 +44,12 @@
 	width: 100%;
 	top: 50%;
 	box-sizing: border-box;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	
 
 	div {
 		padding: 15px;
@@ -49,7 +63,7 @@
 .carousel__navs {
 	position: absolute;
 	bottom: 20px;
-	padding: 20px 0;
+	padding: 20px 15px;
 	text-align: center;
 	width: 100%;
 	

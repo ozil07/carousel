@@ -54,6 +54,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
+* {
+  box-sizing: border-box !important;
+}
+
 .carousel {
   position: relative;
   overflow: hidden;
@@ -72,11 +76,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   left: 0;
   width: 100%;
   opacity: 0;
-  transition: opacity 1.5s linear;
+  transition: opacity 1s linear;
 }
-.carousel__slide img {
-  width: 100%;
+.carousel__slide span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 500px;
+  text-align: center;
+  font: 200px Arial,sans-serif;
+  color: #000;
 }
 
 .carousel__control {
@@ -88,6 +97,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: 100%;
   top: 50%;
   box-sizing: border-box;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 .carousel__control div {
   padding: 15px;
@@ -100,7 +114,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .carousel__navs {
   position: absolute;
   bottom: 20px;
-  padding: 20px 0;
+  padding: 20px 15px;
   text-align: center;
   width: 100%;
 }
